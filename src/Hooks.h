@@ -9,26 +9,20 @@ namespace MaxsuIFrame
 		{
 			SKSE::AllocTrampoline(1 << 4);
 			auto& trampoline = SKSE::GetTrampoline();
-
-			REL::Relocation<std::uintptr_t> ProcessHitFunc{ REL::ID(37673) };
-			_IsGhost = trampoline.write_call<5>(ProcessHitFunc.address() + 0x45, IsGhost);
-
-			REL::Relocation<std::uintptr_t> NPCInvulnerableBase{ REL::ID(36715) };
-			_IsGhost = trampoline.write_call<5>(NPCInvulnerableBase.address() + 0x2A, IsGhost);
-
-			REL::Relocation<std::uintptr_t> PCInvulnerableBase{ REL::ID(39428) };
-			_IsGhost = trampoline.write_call<5>(PCInvulnerableBase.address() + 0x14, IsGhost);
+			_IsGhost = trampoline.write_call<5>(REL::RelocationID(37673, 38627).address() + REL::Relocate(0x45, 0x47), IsGhost);
+			_IsGhost = trampoline.write_call<5>(REL::RelocationID(36715, 37725).address() + REL::Relocate(0x2A, 0x22), IsGhost);
+			_IsGhost = trampoline.write_call<5>(REL::RelocationID(39428, 40504).address() + REL::Relocate(0x14, 0x14), IsGhost);
 		}
 
 	private:
 		static bool IsGhost(const RE::Actor* a_actor)
 		{
-			logger::debug("IsGhost Trigger!");
+			logger::info("IsGhost Trigger!");
 
 			bool iframeActive = false, iframeSate = false;
 
 			if (a_actor->GetGraphVariableBool("bIframeActive", iframeActive) && iframeActive && a_actor->GetGraphVariableBool("bInIframe", iframeSate) && iframeSate) {
-				logger::debug("Actor is invulnerable!");
+				logger::info("Actor is invulnerable!");
 				return true;
 			}
 

@@ -1,2 +1,0 @@
-# MaxsuIFrame
- A SKSE Plugin

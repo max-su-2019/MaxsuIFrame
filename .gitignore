@@ -1,5 +1,4 @@
-build/
-dist/
-vcpkg_installed/
-.idea/
-include/steam/
+build
+.clang-format
+.editorconfig
+.vs

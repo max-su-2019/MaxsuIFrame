@@ -1,4 +1,5 @@
 #pragma once
+#include "Functions.h"
 
 namespace MaxsuIFrame
 {
@@ -17,12 +18,16 @@ namespace MaxsuIFrame
 	private:
 		static bool IsGhost(const RE::Actor* a_actor)
 		{
-			logger::info("IsGhost Trigger!");
+			DEBUG("IsGhost Trigger!");
+
+			if (ActorInIFrames(a_actor)) {
+				DEBUG("{}-{:x} In Annotations I-Frame!", a_actor->GetName(), a_actor->GetFormID());
+				return true;
+			}
 
 			bool iframeActive = false, iframeSate = false;
-
 			if (a_actor->GetGraphVariableBool("bIframeActive", iframeActive) && iframeActive && a_actor->GetGraphVariableBool("bInIframe", iframeSate) && iframeSate) {
-				logger::info("Actor is invulnerable!");
+				DEBUG("{}-{:x} In Behavior I-Frame!", a_actor->GetName(), a_actor->GetFormID());
 				return true;
 			}
 

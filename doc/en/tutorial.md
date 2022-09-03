@@ -3,14 +3,13 @@
 
 ## How I-Frame Genrator Works:
 ---  
-I-Frame Generator applies custom invincibility frames (refer as I-frame below) to game engine by hooking the hit damage delivering function as well as the magic damage delivering function. It would checks for the annotations of the current active animation clips of an actor, if the local time of a clip is bewteen an I-frame duration, it will then force the game engine to recognize the actor as invincibile.    
+I-Frame Generator applies custom *invincibility frames* (refer as I-frame below) to game engine by hooking the hit damage delivering function as well as the magic damage delivering function. It would checks for the annotations of the current active animation clips of an actor, if the local time of a clip is bewteen an I-frame duration, it will then force the game engine to recognize the actor as invincibile.    
 
 ---
 <br/> 
 
 ## How to generate I-Frame:  
 --- 
-<br/> 
 
 ### New Method (Recommended)    
 

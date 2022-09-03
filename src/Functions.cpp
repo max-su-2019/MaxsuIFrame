@@ -17,7 +17,7 @@ namespace MaxsuIFrame
 
 	bool ActorInIFrames(const RE::Actor* a_actor)
 	{
-		if (!a_actor)
+		if (!a_actor || !a_actor->Is3DLoaded())
 			return false;
 
 		RE::BSAnimationGraphManagerPtr graphMgr;
